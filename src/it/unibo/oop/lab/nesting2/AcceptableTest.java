@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import it.unibo.oop.lab.nesting2.Acceptor.ElementNotAcceptedException;
-
 /**
  * This is the JUnit test for {@link it.unibo.oop.lab.nesting2.Acceptable}
  * implementation.
@@ -29,7 +27,7 @@ public class AcceptableTest {
         /*
          * the following needs instantiation
          */
-        final Acceptable<Integer> acc = null;
+        final Acceptable<Integer> acc = new OneListAcceptable<Integer>(list);
         final Acceptor<Integer> acceptor = acc.acceptor();
         for (final Integer el: list) {
             acceptor.accept(el);
@@ -47,7 +45,7 @@ public class AcceptableTest {
          * Failing acceptance
          */
         final List<Integer> list = Arrays.asList(10, 20, 30, 40);
-        final Acceptable<Integer> acc = null;
+        final Acceptable<Integer> acc = new OneListAcceptable<Integer>(list);
         final Acceptor<Integer> acceptor = acc.acceptor();
         try {
             for (final Integer el: list) {
@@ -79,7 +77,7 @@ public class AcceptableTest {
          * Exception due to early end
          */
         final List<Integer> list = Arrays.asList(10, 20, 30, 40);
-        final Acceptable<Integer> acc = null;
+        final Acceptable<Integer> acc = new OneListAcceptable<Integer>(list);
         final Acceptor<Integer> acceptor = acc.acceptor();
         try {
             acceptor.accept(10);
